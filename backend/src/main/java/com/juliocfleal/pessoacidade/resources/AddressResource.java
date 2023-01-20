@@ -19,6 +19,8 @@ import com.juliocfleal.pessoacidade.DTO.AddressDTO;
 import com.juliocfleal.pessoacidade.DTO.AddressInsertDTO;
 import com.juliocfleal.pessoacidade.services.AddressService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/addresses")
 public class AddressResource {
@@ -27,7 +29,7 @@ public class AddressResource {
 	AddressService service;
 	
 	@PostMapping
-	public ResponseEntity<AddressDTO> createAddress(@RequestBody AddressInsertDTO dto) {
+	public ResponseEntity<AddressDTO> createAddress(@Valid @RequestBody AddressInsertDTO dto) {
 		AddressDTO addressDTO = service.createAddress(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(addressDTO.getId()).toUri();
 		return ResponseEntity.created(uri).body(addressDTO);

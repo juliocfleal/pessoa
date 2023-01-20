@@ -5,9 +5,13 @@ import java.util.Date;
 
 import com.juliocfleal.pessoacidade.entities.Person;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class PersonInsertDTO {
 	
+	@NotBlank(message = "Campo Obrigatório")
 	private String name;
+	
 	private LocalDate birthDate;
 	
 

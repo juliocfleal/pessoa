@@ -60,7 +60,7 @@ public class AddressService {
 	}
 	
 	
-	private void setAllPersonsAddressNotMain(Long userId) {
+	public void setAllPersonsAddressNotMain(Long userId) {
 		List<Address> list = repository.findAllPersonsMainAddress(userId);
 		if(list.isEmpty() == false) {
 			for(Address address : list) {

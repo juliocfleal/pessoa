@@ -1,11 +1,18 @@
 package com.juliocfleal.pessoacidade.DTO;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class AddressInsertDTO {
 
+	@NotBlank(message = "Campo Obrigatório")
 	private String streetAddress;
+	
+	@NotBlank(message = "Campo Obrigatório")
 	private String CEP;
+	
+	@NotBlank(message = "Campo Obrigatório")
 	private String number;
-	private String city;
+	private String city;	
 	private boolean isMain;
 	private Long userId;
 	

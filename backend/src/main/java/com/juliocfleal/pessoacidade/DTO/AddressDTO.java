@@ -2,9 +2,13 @@ package com.juliocfleal.pessoacidade.DTO;
 
 import com.juliocfleal.pessoacidade.entities.Address;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 public class AddressDTO {
 
 	private Long id;
+		
 	private String streetAddress;
 	private String CEP;
 	private String number;

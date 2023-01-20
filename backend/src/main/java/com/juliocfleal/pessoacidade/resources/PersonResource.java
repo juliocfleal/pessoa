@@ -19,6 +19,8 @@ import com.juliocfleal.pessoacidade.DTO.PersonDTO;
 import com.juliocfleal.pessoacidade.DTO.PersonInsertDTO;
 import com.juliocfleal.pessoacidade.services.PersonService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/persons")
 public class PersonResource {
@@ -27,14 +29,14 @@ public class PersonResource {
 	private PersonService service;
 	
 	@PostMapping
-	public ResponseEntity<PersonDTO> createPerson(@RequestBody PersonInsertDTO dto){
+	public ResponseEntity<PersonDTO> createPerson(@Valid  @RequestBody PersonInsertDTO dto){
 		PersonDTO personDTO = service.createPerson(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(personDTO.getId()).toUri();
 		return ResponseEntity.created(uri).body(personDTO);
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<PersonDTO> updatePerson(@PathVariable Long id, @RequestBody PersonDTO dto){
+	public ResponseEntity<PersonDTO> updatePerson(@PathVariable Long id, @Valid @RequestBody PersonDTO dto){
 		PersonDTO personDTO = service.updatePerson(id, dto);
 		return ResponseEntity.ok().body(personDTO);
 	}
